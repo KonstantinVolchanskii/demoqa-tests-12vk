@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static guru.qa.utils.RandomUtils.getRandomEmail;
+import static guru.qa.utils.RandomUtils.getRandomString;
 import static java.lang.String.format;
 
 public class RegistrationFormTestsWithDataWithUtils {
@@ -25,11 +27,10 @@ public class RegistrationFormTestsWithDataWithUtils {
 
     @Test
     void execute() {
-//Блок переметров
         LocalDate birth = LocalDate.of(1987, 2, 13);    //дата в стандартном для Java формате
-        String firstName = "Fedor",
-                lastName = "Bobrov",
-                email = "Bobrov@mail.ru";
+        String firstName = getRandomString(10),
+                lastName = getRandomString(10),
+                email = getRandomEmail();
         String expectedFullName= format("%s %s", firstName, lastName);
         String gender = "Male";
         String phoneNumber = "88001234567";
