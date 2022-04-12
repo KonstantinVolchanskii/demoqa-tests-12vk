@@ -10,15 +10,12 @@ import java.util.ArrayList;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-//import static com.codeborne.selenide.Selectors.byXpath; //если понадобится скролл
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
-public class TextBoxTests {
+public class RegistrationFormTests {
 
     @BeforeAll
     static void prepare() {
-        Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
     }
@@ -48,12 +45,15 @@ public class TextBoxTests {
         actions.add(stateCity.$(byText(city)));
 
         open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixeban').remove()");
+
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
         $("#genterWrapper").$(byText(gender)).click();
         $("#userNumber").setValue(phoneNumber);
-        //$(byXpath("//*[@id='submit']")).scrollIntoView(true);       //скролл на случай маленького экрана/рекламы
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(month);
         $(".react-datepicker__year-select").selectOption(String.valueOf(birth.getYear()));
@@ -66,13 +66,18 @@ public class TextBoxTests {
         for (SelenideElement selenideElement : actions) {
             selenideElement.click();                                //прокликиваем всю коллекцию
         }
+
+        //$("#state").click();
+        //$("#stateCity-wrapper").$(byText("NCR")).click();
+        //$("#city").click();
+        //$("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
 
+
         //Блок проверок
-        //$("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        //$(".table-responsive").shouldHave(text(firstName + " " + lastName), text(email), text(gender),
-        //        text(phoneNumber), text(birth.getDayOfMonth() + " " + month + "," + birth.getYear()), text(subject),
-        //text(hobby), text(imgPath.substring(4)), text(address), text(state + " " + city));
-        //$("#closeLargeModal").click();
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text(firstName + " " + lastName), text(email), text(gender));
+        //$(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Fedor Bobrov"));
+        $("#closeLargeModal").click();
     }
 }
