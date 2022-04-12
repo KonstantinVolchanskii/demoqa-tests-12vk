@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;RegistrationFormTests
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.Condition.text;

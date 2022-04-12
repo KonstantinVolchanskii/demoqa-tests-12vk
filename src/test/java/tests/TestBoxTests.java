@@ -13,13 +13,13 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static java.lang.String.format;
 
-public class RegistrationFormTestsWithData {
+public class TestBoxTests {
 
     //Блок переметров
     LocalDate birth = LocalDate.of(1987, 2, 13);    //дата в стандартном для Java формате
     String firstName = "Fedor",
-             lastName = "Bobrov",
-             email = "Bobrov@mail.ru";
+            lastName = "Bobrov",
+            email = "Bobrov@mail.ru";
     String expectedFullName= format("%s %s", firstName, lastName);
     String gender = "Male";
     String phoneNumber = "88001234567";
@@ -69,9 +69,9 @@ public class RegistrationFormTestsWithData {
 
 
         //Блок проверок
-     $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-     $(".table-responsive").shouldHave(text(expectedFullName), text(email), text(gender));
-    // $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Fedor Bobrov"));
-     $("#closeLargeModal").click();
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text(expectedFullName), text(email), text(gender));
+        // $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Fedor Bobrov"));
+        $("#closeLargeModal").click();
     }
 }
