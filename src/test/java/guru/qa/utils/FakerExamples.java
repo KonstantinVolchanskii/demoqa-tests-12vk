@@ -9,6 +9,7 @@ public class FakerExamples {
     public static void main(String[] args) {
         Faker faker = new Faker();
 
+        
         System.out.println(faker.address().fullAddress());
         System.out.println(faker.backToTheFuture().quote());
         System.out.println(faker.animal().name());
