@@ -14,4 +14,17 @@ public class RandomUtils {
 
         return result.toString();
     }
+
+    public static int getRandomint(int min, int max){
+        Random r = new Random();
+
+        return r.nextInt((max - min) + 1) + min;
+
+    }
+    public static String getRandomEmail() {
+        String emailDomain = "@qa.guru";
+
+        return getRandomString(10 ) + emailDomain;
+
+    }
 }
