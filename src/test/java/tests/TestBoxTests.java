@@ -17,9 +17,6 @@ public class TestBoxTests {
             userGender = faker.demographic().sex(),
             currentAddress = faker.address().fullAddress(),
             userNumber = faker.numerify("##########"),
-            day = "13",
-            month = "February",
-            year = "1987",
             subjects = "Maths",
             hobbies = "Sports",
             picture = "vodorosli_rastenie_makro_krupnym_planom_106345_1920x1080.jpg",
@@ -34,14 +31,14 @@ public class TestBoxTests {
     }
 
     @Test
-    void RegistrationTests() {
-        RegistrationFormPage registrationFormPage = this.registrationFormPage.openPage()
+    void registrationTests() {
+                registrationFormPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
                 .setGender(userGender)
                 .setUserNumber(userNumber)
-                .setBirthDate(day, month, year)
+                .setBirthDate("13" , "February" , "1987")
                 .setSubjects(subjects)
                 .setUserHobbies(hobbies)
                 .setupLoadPicture(picture)
@@ -50,15 +47,16 @@ public class TestBoxTests {
                 .setCity(city)
                 .setsubmitClick()
                 // Asserts
+                .checkCompletedFormHeader("Thanks for submitting the form")
                 .checkCompletedForm("Student Name", firstName + " " + lastName)
                 .checkCompletedForm("Student Email", userEmail)
                 .checkCompletedForm("Gender", userGender)
-                .checkCompletedForm("Number", userNumber)
-                .checkCompletedForm("Birthday", day + "." + month + "." + year)
+                .checkCompletedForm("Mobile", userNumber)
+                .checkCompletedForm("Date of Birth", "13 February,1987")
                 .checkCompletedForm("Subjects", subjects)
                 .checkCompletedForm("Hobbies", hobbies)
                 .checkCompletedForm("Picture", picture)
-                .checkCompletedForm("Current Address", currentAddress)
+                .checkCompletedForm("Address", currentAddress)
                 .checkCompletedForm("State and City", state + " " + city);
     }
 }
