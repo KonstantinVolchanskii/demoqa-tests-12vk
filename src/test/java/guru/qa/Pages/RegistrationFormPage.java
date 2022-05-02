@@ -11,19 +11,21 @@ public class RegistrationFormPage {
     private final CalendarComponent calendarComponent = new CalendarComponent();
 
      SelenideElement
-            firstNameInput = $("#firstName"),
-            lastNameInput = $("#lastName"),
-            userEmailInput = $("#userEmail"),
-            userGenderClick = $("#genterWrapper"),
-            userNumberInput = $("#userNumber"),
-            subjectsInput = $("#subjectsInput"),
-            userHobbies = $("#hobbiesWrapper"),
-            upLoadPicture = $("#uploadPicture"),
-            userAddress = $("#currentAddress"),
-            setState = $("#react-select-3-input"),
-            setCity = $("#react-select-4-input"),
-            submitClick = $("#submit"),
-            resultsTable = $(".table-responsive");
+
+             firstNameInput = $("#firstName"),
+             lastNameInput = $("#lastName"),
+             userEmailInput = $("#userEmail"),
+             userGenderClick = $("#genterWrapper"),
+             userNumberInput = $("#userNumber"),
+             subjectsInput = $("#subjectsInput"),
+             userHobbies = $("#hobbiesWrapper"),
+             upLoadPicture = $("#uploadPicture"),
+             userAddress = $("#currentAddress"),
+             setState = $("#react-select-3-input"),
+             setCity = $("#react-select-4-input"),
+             submitClick = $("#submit"),
+             headerCheck = $("#example-modal-sizes-title-lg"),
+             resultsTable = $(".table-responsive");
 
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
@@ -60,8 +62,8 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setBirthDate(String day , String month , String year) {
-
-        calendarComponent.setDate("13" , "February" , "1987");
+        $("#dateOfBirthInput").click();
+        calendarComponent.setDate(day, month, year);
         return this;
     }
 
@@ -97,6 +99,11 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setsubmitClick() {
         submitClick.click();
+        return this;
+    }
+
+    public RegistrationFormPage checkCompletedFormHeader(String header) {
+        headerCheck.shouldHave(text(header));
         return this;
     }
 
