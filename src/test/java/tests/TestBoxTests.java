@@ -1,8 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import guru.qa.Pages.RegistrationFormPage;
 import com.github.javafaker.Faker;
+import guru.qa.Pages.RegistrationFormPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -34,14 +34,14 @@ public class TestBoxTests {
     }
 
     @Test
-    void RegistrationTests() {
+    void registrationTests() {
         RegistrationFormPage registrationFormPage = this.registrationFormPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
                 .setGender(userGender)
                 .setUserNumber(userNumber)
-                .setBirthDate(day, month, year)
+                .setBirthDate(day,month,year)
                 .setSubjects(subjects)
                 .setUserHobbies(hobbies)
                 .setupLoadPicture(picture)
@@ -53,12 +53,12 @@ public class TestBoxTests {
                 .checkCompletedForm("Student Name", firstName + " " + lastName)
                 .checkCompletedForm("Student Email", userEmail)
                 .checkCompletedForm("Gender", userGender)
-                .checkCompletedForm("Number", userNumber)
-                .checkCompletedForm("Birthday", day + "." + month + "." + year)
+                .checkCompletedForm("Mobile", userNumber)
+                .checkCompletedForm("Date of Birth", day + " " + month + "," + year)
                 .checkCompletedForm("Subjects", subjects)
                 .checkCompletedForm("Hobbies", hobbies)
                 .checkCompletedForm("Picture", picture)
-                .checkCompletedForm("Current Address", currentAddress)
+                .checkCompletedForm("Address", currentAddress)
                 .checkCompletedForm("State and City", state + " " + city);
     }
 }
