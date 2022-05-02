@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationFormPage {
     private final CalendarComponent calendarComponent = new CalendarComponent();
 
-    SelenideElement
+     SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
@@ -59,9 +59,9 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setBirthDate(String day, String month, String year) {
+    public RegistrationFormPage setBirthDate(String day , String month , String year) {
 
-        calendarComponent.setDate(day, month, year);
+        calendarComponent.setDate("13" , "February" , "1987");
         return this;
     }
 

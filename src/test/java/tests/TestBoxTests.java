@@ -35,7 +35,7 @@ public class TestBoxTests {
 
     @Test
     void RegistrationTests() {
-        registrationFormPage.openPage()
+        RegistrationFormPage registrationFormPage = this.registrationFormPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
@@ -53,12 +53,12 @@ public class TestBoxTests {
                 .checkCompletedForm("Student Name", firstName + " " + lastName)
                 .checkCompletedForm("Student Email", userEmail)
                 .checkCompletedForm("Gender", userGender)
-                .checkCompletedForm("Mobile", userNumber)
-                .checkCompletedForm("Date of Birth", day + " " + month + "," + year)
+                .checkCompletedForm("Number", userNumber)
+                .checkCompletedForm("Birthday", day + "." + month + "." + year)
                 .checkCompletedForm("Subjects", subjects)
                 .checkCompletedForm("Hobbies", hobbies)
                 .checkCompletedForm("Picture", picture)
-                .checkCompletedForm("Address", currentAddress)
+                .checkCompletedForm("Current Address", currentAddress)
                 .checkCompletedForm("State and City", state + " " + city);
     }
 }
